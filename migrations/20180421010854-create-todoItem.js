@@ -1,23 +1,15 @@
-const userTableName = 'user';
+const toDoItemTableName = 'to_do_item';
 
 module.exports = {
   up: (queryInterface, Sequelize) =>
-    queryInterface.createTable(userTableName, {
+    queryInterface.createTable(toDoItemTableName, {
       id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUID,
       },
-      firstName: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      lastName: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      email: {
+      description: {
         allowNull: false,
         type: Sequelize.STRING,
       },
@@ -29,10 +21,19 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      toDoId: {
+        type: Sequelize.UUID,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'to_do',
+          key: 'id',
+          as: 'to_do_id',
+        },
+      },
     }),
   down: (queryInterface, Sequelize) => {
     console.log('Sequelize', Sequelize);
 
-    return queryInterface.dropTable(userTableName);
+    return queryInterface.dropTable(toDoItemTableName);
   },
 };

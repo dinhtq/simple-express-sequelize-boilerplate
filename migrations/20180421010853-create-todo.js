@@ -1,23 +1,15 @@
-const userTableName = 'user';
+const toDoTableName = 'to_do';
 
 module.exports = {
   up: (queryInterface, Sequelize) =>
-    queryInterface.createTable(userTableName, {
+    queryInterface.createTable(toDoTableName, {
       id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUID,
       },
-      firstName: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      lastName: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      email: {
+      title: {
         allowNull: false,
         type: Sequelize.STRING,
       },
@@ -33,6 +25,6 @@ module.exports = {
   down: (queryInterface, Sequelize) => {
     console.log('Sequelize', Sequelize);
 
-    return queryInterface.dropTable(userTableName);
+    return queryInterface.dropTable(toDoTableName);
   },
 };

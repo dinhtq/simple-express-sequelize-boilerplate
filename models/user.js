@@ -6,7 +6,9 @@ module.exports = (sequelize, DataTypes) => {
       lastName: DataTypes.STRING,
       email: DataTypes.STRING,
     },
-    {},
+    {
+      underscored: true,
+    },
   );
 
   // User.associate = function(models) {
