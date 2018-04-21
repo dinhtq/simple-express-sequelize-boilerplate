@@ -1,11 +1,12 @@
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+
 const PORT = 3000;
 // Set up the express app
 const app = express();
 
-const db = require('./models'); 
+const db = require('./models');
 
 // Log requests to the console.
 app.use(logger('dev'));
@@ -24,10 +25,10 @@ app.listen(PORT, () => {
 });
 
 db.sequelize.authenticate()
-.then(() => {
-  console.log('Connected to db!');
-})
-.catch((err) => {
-  console.log(err);
-});
+  .then(() => {
+    console.log('Connected to db!');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
