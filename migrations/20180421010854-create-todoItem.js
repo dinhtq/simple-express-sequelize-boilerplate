@@ -30,6 +30,8 @@ module.exports = {
           as: 'to_do_id',
         },
       },
+    }, {
+      underscored: true,
     }),
   down: (queryInterface, Sequelize) => {
     console.log('Sequelize', Sequelize);

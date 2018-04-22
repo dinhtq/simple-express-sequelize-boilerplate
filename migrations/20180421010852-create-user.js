@@ -29,6 +29,8 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+    }, {
+      underscored: true,
     }),
   down: (queryInterface, Sequelize) => {
     console.log('Sequelize', Sequelize);
