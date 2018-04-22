@@ -2,8 +2,12 @@ const { ToDo } = require('../models');
 const uuid = require('uuid/v4');
 
 module.exports = {
-  list(req, res) {
-    res.send('ok');
+  list(req, res, next) {
+    ToDo.findAll()
+      .then((result) => {
+        res.send(result);
+      })
+      .catch(err => next(err));
   },
 
   create(req, res, next) {
