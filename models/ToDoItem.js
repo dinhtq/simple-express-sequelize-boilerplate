@@ -2,20 +2,21 @@ module.exports = (sequelize, DataTypes) => {
   const ToDoItem = sequelize.define(
     'ToDoItem',
     {
-      name: {
+      description: {
         allowNull: false,
         type: DataTypes.STRING,
       },
     },
     {
-      underscored: true,
+      underscored: false,
       tableName: 'to_do_item',
     },
   );
 
   ToDoItem.associate = (models) => {
     ToDoItem.belongsTo(models.ToDo, {
-      foreignKey: 'to_do_id',
+      foreignKey: 'toDoId',
+      as: 'toDo',
       onDelete: 'CASCADE',
     });
   };
